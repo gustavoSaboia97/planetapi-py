@@ -17,7 +17,7 @@ Para iniciar a aplicação, primeiro é necessário instalar as dependencias do 
     
 e em seguida iniciar a aplicação
 
-    uvicorn starter:app --reload
+    uvicorn starter:app --reload --host 0.0.0.0 --port 8080
     
 ## Requests
 A api suporta requests de GET, POST, DELETE.
