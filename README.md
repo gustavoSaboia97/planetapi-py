@@ -1,13 +1,31 @@
 # Star Wars Planet API
 
-Este repositório consiste em desenvolver um CRUD com planetas, consumir uma api para verificar aparições nos filmes de 
-starwars (swapi) e armazenar os dados necessários em um banco de dados com MongoDB.
+Este repositório consiste em uma aplicação com um CRUD com planetas aonde se faz necessário consumir uma api para 
+verificar aparições destes planetas nos filmes de starwars (swapi) e armazenar os dados necessários em um banco de 
+dados.
 
 ## Tecnologias
 
 - Fast API
 - MongoDB
 - Docker
+
+## Execução de Testes
+
+    $ python -m unittest discover
+    
+or 
+
+    $ coverage run --source=tests -m unittest discover
+    $ coverage report
+
+## Mongo Configuration
+
+Para execução da aplicação é necessário uma variável de ambiente referenciando a base de dados do projeto.
+
+Ex:
+
+    DATABASE_URI=mongodb://localhost:27017/
 
 ## Iniciar a Aplicação
 
