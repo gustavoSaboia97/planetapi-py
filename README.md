@@ -9,6 +9,15 @@ starwars (swapi) e armazenar os dados necessários em um banco de dados com Mong
 - MongoDB
 - Docker
 
+## Execução de Testes
+
+    $ python -m unittest discover
+    
+or 
+
+    $ coverage run --source=tests -m unittest discover
+    $ coverage report
+
 ## Iniciar a Aplicação
 
 Para iniciar a aplicação, primeiro é necessário instalar as dependencias do projeto
