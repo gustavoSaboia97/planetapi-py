@@ -18,6 +18,7 @@ class Planet(BaseModel):
 
     def to_dict(self) -> dict:
         return {
+            "id": self.id,
             "name": self.name,
             "climate": self.climate,
             "terrain": self.terrain,
