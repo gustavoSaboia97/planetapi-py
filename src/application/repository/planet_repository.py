@@ -9,11 +9,11 @@ class PlanetRepository:
         self.__mongo_configuration = MongoConfig()
         self.__database = self.__mongo_configuration.database
         self.__planet_collection = self.__database.planet_collection
-        self.__planet_collection.create_index("planet", unique=True)
+        self.__planet_collection.create_index("name", unique=True)
 
     def add_new_planet(self, planet: Planet) -> Planet:
         inserted_planet = self.__planet_collection.insert_one(planet.to_mongo_dict())
-        planet.id = inserted_planet.inserted_id
+        planet.id = str(inserted_planet.inserted_id)
         return planet
 
     def get_all_planets(self) -> list:
