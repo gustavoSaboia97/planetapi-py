@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  planetapi:
+    build: .
+    container_name: planetapi
+    environment:
+      - DATABASE_URI=mongodb://planetapi-mongodb:27017/
+    ports:
+      - 8888:8888
+    working_dir: /app
+    depends_on:
+      - mongo
+    networks:
+      - planetapinetwork
+    restart: always
+
+  mongo:
+    image: mongo
+    container_name: planetapi-mongodb
+    networks:
+      - planetapinetwork
+    volumes:
+      - $HOME/data/planetapi-mongo-data:/data/db
+      - $HOME/data/planetapi-mongo-bkp:/data/bkp
+    restart: always
+
+networks:
+  planetapinetwork:
+    driver: bridge
