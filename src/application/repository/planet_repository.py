@@ -34,36 +34,30 @@ class PlanetRepository:
     def get_planet_by_id(self, planet_id: str) -> Planet:
         find_query = {"_id": ObjectId(planet_id)}
 
-        planet = Planet(
-            id="",
-            name="",
-            terrain="",
-            climate=""
-        )
+        planet = None
 
         for document in self.__planet_collection.find(find_query):
-            planet.id = str(document['_id'])
-            planet.name = str(document['name'])
-            planet.terrain = str(document['terrain'])
-            planet.climate = str(document['climate'])
+            planet = Planet(
+                id=str(document['_id']),
+                name=str(document['name']),
+                terrain=str(document['terrain']),
+                climate=str(document['climate'])
+            )
 
         return planet
 
     def get_planet_by_name(self, planet_name: str) -> Planet:
         find_query = {"name": planet_name}
 
-        planet = Planet(
-            id="",
-            name="",
-            terrain="",
-            climate=""
-        )
+        planet = None
 
         for document in self.__planet_collection.find(find_query):
-            planet.id = str(document['_id'])
-            planet.name = str(document['name'])
-            planet.terrain = str(document['terrain'])
-            planet.climate = str(document['climate'])
+            planet = Planet(
+                id=str(document['_id']),
+                name=str(document['name']),
+                terrain=str(document['terrain']),
+                climate=str(document['climate'])
+            )
 
         return planet
 
