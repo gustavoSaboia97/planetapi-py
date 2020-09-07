@@ -21,11 +21,13 @@ or
 
 ## Mongo Configuration
 
-Para execução da aplicação é necessário uma variável de ambiente referenciando a base de dados do projeto.
+Para execução da aplicação é necessário uma variável de ambiente referenciando a base de dados do projeto e outra a fim 
+de informar a api da SWAPI.
 
 Ex:
 
     DATABASE_URI=mongodb://localhost:27017/
+    SWAPI_URI=https://swapi.co/api/planets/
 
 ## Iniciar a Aplicação
 
