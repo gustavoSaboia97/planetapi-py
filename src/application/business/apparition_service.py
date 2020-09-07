@@ -1,9 +1,10 @@
 from src.config.env_config import SWAPI_URI
-import requests
+from src.cache import get_requester_one_day_cache
 
 
 def get_planet_apparition_counter(planet_name: str) -> int:
     final_uri = get_final_uri(planet_name)
+    requests = get_requester_one_day_cache()
     response = requests.get(final_uri)
     return get_apparitions(response.json())
 

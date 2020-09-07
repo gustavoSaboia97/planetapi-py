@@ -20,18 +20,19 @@ json_response = {
 
 class TestApparitionService(unittest.TestCase):
 
-    @patch('src.application.business.apparition_service.requests')
+    @patch('src.application.business.apparition_service.get_requester_one_day_cache')
     def test_should_get_apparitions_on_swapi(self, requests_mock) -> None:
         planet_name = "Tatooine"
 
         response = MagicMock()
 
-        requests_mock.get.return_value = response
+        requests_mock_cached = requests_mock.return_value
+        requests_mock_cached.get.return_value = response
         response.json.return_value = json_response
 
         response = get_planet_apparition_counter(planet_name)
 
-        requests_mock.get.assert_called()
+        requests_mock_cached.get.assert_called()
         self.assertEqual(5, response, "Wrong apparition quantity")
 
 
