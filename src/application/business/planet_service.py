@@ -1,5 +1,5 @@
 from src.application.repository import PlanetRepository
-from src.application.business.aparition_service import get_planet_apparition_counter
+from src.application.business.apparition_service import get_planet_apparition_counter
 from src.application.models.api import Planet
 from src.error import ObjectAlreadyExistsError, ObjectNotFoundError
 from src.util.logger import get_logger
