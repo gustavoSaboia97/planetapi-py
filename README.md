@@ -16,10 +16,10 @@ dados.
     
 or 
 
-    $ coverage run --source=tests -m unittest discover
+    $ coverage run --source=test -m unittest discover
     $ coverage report
 
-## Mongo Configuration
+## Variaveis de Ambiente
 
 Para execução da aplicação é necessário uma variável de ambiente referenciando a base de dados do projeto e outra a fim 
 de informar a api da SWAPI.
@@ -82,16 +82,6 @@ DELETE: `localhost:8080/api/planet/{ID}` Deleta um planeta na base de dados com 
     
     Sem conteúdo de resposta
 
-
-## Exceptions
-
-Caso ocorra um erro, o retorno será da seguinte forma:
-
-```
-{
-    "error": "Mensagem do erro"
-}
-```
 ### Erros comuns:
 
 * Campo vazio, gera um erro de BAD REQUEST.
