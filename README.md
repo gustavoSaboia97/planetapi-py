@@ -82,16 +82,6 @@ DELETE: `localhost:8080/api/planet/{ID}` Deleta um planeta na base de dados com 
     
     Sem conteúdo de resposta
 
-
-## Exceptions
-
-Caso ocorra um erro, o retorno será da seguinte forma:
-
-```
-{
-    "error": "Mensagem do erro"
-}
-```
 ### Erros comuns:
 
 * Campo vazio, gera um erro de BAD REQUEST.
