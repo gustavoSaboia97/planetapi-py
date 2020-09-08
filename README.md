@@ -10,15 +10,6 @@ dados.
 - MongoDB
 - Docker
 
-## Execução de Testes
-
-    $ python -m unittest discover
-    
-or 
-
-    $ coverage run --source=test -m unittest discover
-    $ coverage report
-
 ## Variaveis de Ambiente
 
 Para execução da aplicação é necessário uma variável de ambiente referenciando a base de dados do projeto e outra a fim 
@@ -30,6 +21,19 @@ Ex:
     SWAPI_URI=https://swapi.co/api/planets/
 
 ## Iniciar a Aplicação
+
+Com o mongo db devidamente inicializado e variaveis de ambiente preenchidas.
+
+### Execução de Testes
+
+    $ python -m unittest discover
+    
+or 
+
+    $ coverage run --source=test -m unittest discover
+    $ coverage report
+
+### Execução do servico
 
 Para iniciar a aplicação, primeiro é necessário instalar as dependencias do projeto
     
