@@ -1,4 +1,5 @@
 from src.application.repository import PlanetRepository
+from src.application.business.apparition_service import get_planet_apparition_counter
 from src.application.models.api import Planet
 from src.error import ObjectAlreadyExistsError, ObjectNotFoundError
 from src.util.logger import get_logger
@@ -21,12 +22,19 @@ class PlanetService:
         logger.debug(f"[PLANET SERVICE] Identified new planet {planet.name}")
         logger.debug(f"[PLANET SERVICE] Registering it {planet.name}")
         planet = self.__planet_repo.add_new_planet(planet)
+        planet.apparition_counter = get_planet_apparition_counter(planet.name)
 
         return planet
 
     def get_planets(self) -> list:
         logger.debug(f"[PLANET SERVICE] Getting all registered planets")
-        return self.__planet_repo.get_all_planets()
+
+        planets = self.__planet_repo.get_all_planets()
+
+        for planet in planets:
+            planet.apparition_counter = get_planet_apparition_counter(planet.name)
+
+        return planets
 
     def get_planet_by_id(self, planet_id: str) -> Planet:
         logger.debug(f"[PLANET SERVICE] Getting planet with id {planet_id}")
@@ -34,6 +42,8 @@ class PlanetService:
 
         if planet is None:
             raise ObjectNotFoundError(f"Name {planet_id}")
+
+        planet.apparition_counter = get_planet_apparition_counter(planet.name)
 
         return planet
 
@@ -43,6 +53,8 @@ class PlanetService:
 
         if planet is None:
             raise ObjectNotFoundError(f"Name {planet_name}")
+
+        planet.apparition_counter = get_planet_apparition_counter(planet.name)
 
         return planet
 

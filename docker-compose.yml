@@ -6,6 +6,7 @@ services:
     container_name: planetapi
     environment:
       - DATABASE_URI=mongodb://planetapi-mongodb:27017/
+      - SWAPI_URI=https://swapi.dev/api/planets/
     ports:
       - 8888:8888
     working_dir: /app

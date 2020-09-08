@@ -21,11 +21,13 @@ or
 
 ## Mongo Configuration
 
-Para execução da aplicação é necessário uma variável de ambiente referenciando a base de dados do projeto.
+Para execução da aplicação é necessário uma variável de ambiente referenciando a base de dados do projeto e outra a fim 
+de informar a api da SWAPI.
 
 Ex:
 
     DATABASE_URI=mongodb://localhost:27017/
+    SWAPI_URI=https://swapi.co/api/planets/
 
 ## Iniciar a Aplicação
 
@@ -47,32 +49,34 @@ GET: `localhost:8080/api/planet/` Busca todos os planetas cadastrados na base de
        {
            "name": "nome do planeta",
            "terrain": "terreno do planeta",
-           "climate": "clima do planeta"
+           "climate": "clima do planeta",
+           "apparition_counter": 0
         }
     ]
 
 GET: `localhost:8080/api/planet/{ID}` Busca o planeta cadastrado com o ID indicado.
 
-GET: `localhost:8080/api/planet/name/?name={NAME}` Busca o planeta cadastrado com o nome indicado.
+GET: `localhost:8080/api/planet_name?planet_name={NAME}` Busca o planeta cadastrado com o nome indicado.
 
     Resposta:
     
     {
         "name": "nome do planeta",
         "terrain": "terreno do planeta",
-        "climate": "clima do planeta"
+        "climate": "clima do planeta",
+        "apparition_counter": 0
     }
 
 
 POST: `localhost:8080/api/planet/` Insere um novo planeta na base de dados. Para isso se faz necessário enviar um json com a seguinte estrutura:
 
-```
-{
-    "name": "nome do planeta",
-    "terrain": "terreno do planeta",
-    "climate": "clima do planeta"
-}
-```
+
+    {
+        "name": "nome do planeta",
+        "terrain": "terreno do planeta",
+        "climate": "clima do planeta"
+    }
+
 
 DELETE: `localhost:8080/api/planet/{ID}` Deleta um planeta na base de dados com o id indicado.
     

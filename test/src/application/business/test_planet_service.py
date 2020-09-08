@@ -11,16 +11,19 @@ from src.error import ObjectAlreadyExistsError, ObjectNotFoundError
 class TestPlanetService(unittest.TestCase):
 
     @patch('src.application.business.planet_service.PlanetRepository')
-    def setUp(self, planet_repo_mock) -> None:
+    def setUp(self, planet_repo_mock, ) -> None:
         self.__planet_repo = planet_repo_mock.return_value
         self.__planet_service = PlanetService()
 
-    def test_should_create_planet(self) -> None:
+    @patch('src.application.business.planet_service.get_planet_apparition_counter')
+    def test_should_create_planet(self, apparition_getter_mock) -> None:
         planet = Planet(name="Tatooine", terrain="Arid", climate="Desert")
         expected_planet = Planet(id="5c7c0c22fd8a2f36f6cdea65", name="Tatooine", terrain="Arid", climate="Desert")
+        apparition_counter = 5
 
         self.__planet_repo.get_planet_by_name.return_value = None
         self.__planet_repo.add_new_planet.return_value = expected_planet
+        apparition_getter_mock.return_value = apparition_counter
 
         response = self.__planet_service.create_planet(planet)
 
@@ -36,22 +39,28 @@ class TestPlanetService(unittest.TestCase):
 
         self.assertRaises(ObjectAlreadyExistsError, self.__planet_service.create_planet, planet)
 
-    def test_should_get_planets(self) -> None:
+    @patch('src.application.business.planet_service.get_planet_apparition_counter')
+    def test_should_get_planets(self, apparition_getter_mock) -> None:
         planet = Planet(name="Tatooine", terrain="Arid", climate="Desert")
         expected_planets = [planet]
+        apparition_counter = 5
 
         self.__planet_repo.get_all_planets.return_value = expected_planets
+        apparition_getter_mock.return_value = apparition_counter
 
         response = self.__planet_service.get_planets()
 
         self.__planet_repo.get_all_planets.assert_called_with()
         self.assertEqual(expected_planets, response, "Planet list response not valid")
 
-    def test_should_get_planet_by_id(self) -> None:
+    @patch('src.application.business.planet_service.get_planet_apparition_counter')
+    def test_should_get_planet_by_id(self, apparition_getter_mock) -> None:
         planet_id = "5c7c0c22fd8a2f36f6cdea65"
         expected_planet = Planet(id="5c7c0c22fd8a2f36f6cdea65", name="Tatooine", terrain="Arid", climate="Desert")
+        apparition_counter = 5
 
         self.__planet_repo.get_planet_by_id.return_value = expected_planet
+        apparition_getter_mock.return_value = apparition_counter
 
         response = self.__planet_service.get_planet_by_id(planet_id)
 
@@ -66,11 +75,14 @@ class TestPlanetService(unittest.TestCase):
 
         self.assertRaises(ObjectNotFoundError, self.__planet_service.get_planet_by_id, planet_id)
 
-    def test_should_get_planet_by_name(self) -> None:
+    @patch('src.application.business.planet_service.get_planet_apparition_counter')
+    def test_should_get_planet_by_name(self, apparition_getter_mock) -> None:
         planet_name = "Tatooine"
         expected_planet = Planet(id="5c7c0c22fd8a2f36f6cdea65", name="Tatooine", terrain="Arid", climate="Desert")
+        apparition_counter = 5
 
         self.__planet_repo.get_planet_by_name.return_value = expected_planet
+        apparition_getter_mock.return_value = apparition_counter
 
         response = self.__planet_service.get_planet_by_name(planet_name)
 

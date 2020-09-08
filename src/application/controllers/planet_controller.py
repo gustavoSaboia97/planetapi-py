@@ -29,7 +29,6 @@ class PlanetController:
         planet = self.__service.get_planet_by_name(planet_name)
         return planet.to_dict()
 
-    def delete_planet(self, planet_id: str) -> str:
+    def delete_planet(self, planet_id: str) -> None:
         logger.info(f"[PLANET CONTROLLER] Deleting planet by id {planet_id}")
         self.__service.delete_planet_by_id(planet_id)
-        return ""
