@@ -16,7 +16,7 @@ dados.
     
 or 
 
-    $ coverage run --source=tests -m unittest discover
+    $ coverage run --source=test -m unittest discover
     $ coverage report
 
 ## Mongo Configuration
