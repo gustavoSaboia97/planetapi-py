@@ -22,7 +22,7 @@ Ex:
 
 ## Iniciar a Aplicação
 
-Com o mongo db devidamente inicializado e variaveis de ambiente preenchidas.
+Com o mongo db devidamente inicializado e variaveis de ambiente preenchidas:
 
 ### Execução de Testes
 
@@ -42,6 +42,10 @@ Para iniciar a aplicação, primeiro é necessário instalar as dependencias do 
 e em seguida iniciar a aplicação
 
     uvicorn starter:app --reload --host 0.0.0.0 --port 8080
+    
+### Execução do servico com o Docker
+    
+    docker-compose up --build
     
 ## Requests
 A api suporta requests de GET, POST, DELETE.
