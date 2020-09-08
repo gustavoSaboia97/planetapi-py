@@ -19,7 +19,7 @@ or
     $ coverage run --source=test -m unittest discover
     $ coverage report
 
-## Mongo Configuration
+## Variaveis de Ambiente
 
 Para execução da aplicação é necessário uma variável de ambiente referenciando a base de dados do projeto e outra a fim 
 de informar a api da SWAPI.
