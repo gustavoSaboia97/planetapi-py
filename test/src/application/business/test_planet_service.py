@@ -11,7 +11,7 @@ from src.error import ObjectAlreadyExistsError, ObjectNotFoundError
 class TestPlanetService(unittest.TestCase):
 
     @patch('src.application.business.planet_service.PlanetRepository')
-    def setUp(self, planet_repo_mock, ) -> None:
+    def setUp(self, planet_repo_mock) -> None:
         self.__planet_repo = planet_repo_mock.return_value
         self.__planet_service = PlanetService()
 
