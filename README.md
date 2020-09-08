@@ -49,32 +49,34 @@ GET: `localhost:8080/api/planet/` Busca todos os planetas cadastrados na base de
        {
            "name": "nome do planeta",
            "terrain": "terreno do planeta",
-           "climate": "clima do planeta"
+           "climate": "clima do planeta",
+           "apparition_counter": 0
         }
     ]
 
 GET: `localhost:8080/api/planet/{ID}` Busca o planeta cadastrado com o ID indicado.
 
-GET: `localhost:8080/api/planet/name/?name={NAME}` Busca o planeta cadastrado com o nome indicado.
+GET: `localhost:8080/api/planet_name?planet_name={NAME}` Busca o planeta cadastrado com o nome indicado.
 
     Resposta:
     
     {
         "name": "nome do planeta",
         "terrain": "terreno do planeta",
-        "climate": "clima do planeta"
+        "climate": "clima do planeta",
+        "apparition_counter": 0
     }
 
 
 POST: `localhost:8080/api/planet/` Insere um novo planeta na base de dados. Para isso se faz necessário enviar um json com a seguinte estrutura:
 
-```
-{
-    "name": "nome do planeta",
-    "terrain": "terreno do planeta",
-    "climate": "clima do planeta"
-}
-```
+
+    {
+        "name": "nome do planeta",
+        "terrain": "terreno do planeta",
+        "climate": "clima do planeta"
+    }
+
 
 DELETE: `localhost:8080/api/planet/{ID}` Deleta um planeta na base de dados com o id indicado.
     
